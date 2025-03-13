@@ -4,16 +4,16 @@ frontend:
     preBuild:
       commands:
         - yarn install --frozen-lockfile
-        - echo "Node version: $(node -v)"
-        - echo "Yarn version: $(yarn -v)"
+        - 'node -v'
+        - 'yarn -v'
     build:
       commands:
         - yarn build
-        - ls -la
-        - ls -la out
+        - 'ls -la'
+        - 'ls -la out'
     postBuild:
       commands:
-        - echo "Build completed"
+        - 'echo "Build completed"'
   artifacts:
     baseDirectory: out
     files:
