@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  trailingSlash: true,
+  distDir: 'out',
   // Update basePath according to your repository name
   // basePath: '/your-repo-name',
 }
