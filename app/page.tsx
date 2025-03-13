@@ -1,5 +1,8 @@
 import Link from 'next/link'
 
+export const dynamic = 'force-static'
+export const revalidate = false
+
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto">
