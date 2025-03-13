@@ -2,6 +2,7 @@ import { getPostById, getAllPosts } from '@/lib/posts'
 import { format } from 'date-fns'
 
 export const dynamic = 'force-static'
+export const revalidate = false
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()

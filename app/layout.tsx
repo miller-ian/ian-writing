@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: 'Personal blog and writing space',
 }
 
+export const dynamic = 'force-static'
+export const revalidate = false
+
 export default function RootLayout({
   children,
 }: {

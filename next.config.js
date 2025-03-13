@@ -6,9 +6,6 @@ const nextConfig = {
   },
   trailingSlash: true,
   distDir: 'out',
-  experimental: {
-    appDir: true,
-  },
   // Update basePath according to your repository name
   // basePath: '/your-repo-name',
 }
