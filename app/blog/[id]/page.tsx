@@ -1,6 +1,13 @@
-import { getPostById } from '@/lib/posts'
+import { getPostById, getAllPosts } from '@/lib/posts'
 import { format } from 'date-fns'
 import { notFound } from 'next/navigation'
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts()
+  return posts.map((post) => ({
+    id: post.id,
+  }))
+}
 
 export default async function BlogPost({ params }: { params: { id: string } }) {
   const post = await getPostById(params.id)
