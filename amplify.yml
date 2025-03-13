@@ -10,12 +10,12 @@ frontend:
       commands:
         - yarn build
         - 'ls -la'
-        - 'ls -la out'
+        - 'ls -la .next/static'
     postBuild:
       commands:
         - 'echo "Build completed"'
   artifacts:
-    baseDirectory: out
+    baseDirectory: .next
     files:
       - '**/*'
   cache:
