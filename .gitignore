@@ -35,4 +35,8 @@ next-env.d.ts
 
 # IDE
 .idea/
-.vscode/ 
+.vscode/
+
+# package manager files
+package-lock.json
+yarn.lock 
