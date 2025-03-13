@@ -1,6 +1,7 @@
 import { getPostById, getAllPosts } from '@/lib/posts'
 import { format } from 'date-fns'
-import { notFound } from 'next/navigation'
+
+export const dynamic = 'force-static'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -13,7 +14,12 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
   const post = await getPostById(params.id)
 
   if (!post) {
-    notFound()
+    return (
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4">Post not found</h1>
+        <p>The requested blog post could not be found.</p>
+      </div>
+    )
   }
 
   return (
