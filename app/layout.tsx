@@ -25,7 +25,9 @@ export default function RootLayout({
           <header className="border-b border-gray-200 dark:border-gray-700">
             <div className="container mx-auto px-4 py-6">
               <nav className="flex justify-between items-center">
-                <div className="text-2xl font-bold">Ian's Blog</div>
+                <Link href="/blog" className="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400">
+                  Ian's Blog
+                </Link>
                 <div className="space-x-4">
                   <a href="/about" className="hover:text-blue-600 dark:hover:text-blue-400">About</a>
                 </div>
