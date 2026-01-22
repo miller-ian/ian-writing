@@ -22,36 +22,23 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Send email using Resend (install: npm install resend)
-    // You'll need to set RESEND_API_KEY in your environment variables
-    // Sign up at https://resend.com to get an API key
+    // Send email using Resend
+    const { Resend } = await import('resend')
+    const resend = new Resend(process.env.RESEND_API_KEY)
     
-    if (process.env.RESEND_API_KEY) {
-      const { Resend } = await import('resend')
-      const resend = new Resend(process.env.RESEND_API_KEY)
-      
-      await resend.emails.send({
-        from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
-        to: 'imiller7255@gmail.com',
-        replyTo: email,
-        subject: `New contact form submission from ${name}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>From:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        `,
-      })
-    } else {
-      // Fallback: log the submission (for development)
-      console.log('Contact form submission (email service not configured):', {
-        name,
-        email,
-        message,
-        timestamp: new Date().toISOString(),
-      })
-    }
+    await resend.emails.send({
+      from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
+      to: 'imiller7255@gmail.com',
+      replyTo: email,
+      subject: `New contact form submission from ${name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>From:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+      `,
+    })
 
     return NextResponse.json(
       { message: 'Email sent successfully' },
