@@ -62,6 +62,18 @@ export async function POST(request: NextRequest) {
 
     if (result.error) {
       console.error('Resend API error:', result.error)
+      
+      // Check for domain verification error
+      if (result.error.message?.includes('domain') || result.error.message?.includes('verify')) {
+        return NextResponse.json(
+          { 
+            error: 'Domain verification required. The test domain can only send to your account email. Please verify a domain in Resend and update the FROM_EMAIL environment variable.',
+            details: result.error.message
+          },
+          { status: 500 }
+        )
+      }
+      
       return NextResponse.json(
         { error: `Failed to send email: ${result.error.message || 'Unknown error'}` },
         { status: 500 }
