@@ -29,6 +29,7 @@ export default function RootLayout({
                   Subjective Truths
                 </Link>
                 <div className="space-x-4">
+                  <Link href="/blog" className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
                   <a href="/about" className="hover:text-blue-600 dark:hover:text-blue-400">About</a>
                 </div>
               </nav>
