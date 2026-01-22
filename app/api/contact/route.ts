@@ -22,12 +22,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set in environment variables')
+      return NextResponse.json(
+        { error: 'Email service is not configured. Please contact the administrator.' },
+        { status: 500 }
+      )
+    }
+
     // Send email using Resend
     const { Resend } = await import('resend')
     const resend = new Resend(process.env.RESEND_API_KEY)
     
-    await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
+    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
+    
+    console.log('Attempting to send email:', {
+      from: fromEmail,
+      to: 'imiller7255@gmail.com',
+      replyTo: email,
+      hasApiKey: !!process.env.RESEND_API_KEY,
+    })
+    
+    const result = await resend.emails.send({
+      from: fromEmail,
       to: 'imiller7255@gmail.com',
       replyTo: email,
       subject: `New contact form submission from ${name}`,
@@ -40,14 +58,24 @@ export async function POST(request: NextRequest) {
       `,
     })
 
+    console.log('Resend API response:', result)
+
+    if (result.error) {
+      console.error('Resend API error:', result.error)
+      return NextResponse.json(
+        { error: `Failed to send email: ${result.error.message || 'Unknown error'}` },
+        { status: 500 }
+      )
+    }
+
     return NextResponse.json(
-      { message: 'Email sent successfully' },
+      { message: 'Email sent successfully', id: result.data?.id },
       { status: 200 }
     )
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending email:', error)
     return NextResponse.json(
-      { error: 'Failed to send email. Please try again later.' },
+      { error: `Failed to send email: ${error.message || 'Unknown error'}` },
       { status: 500 }
     )
   }
