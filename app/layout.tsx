@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -92,6 +93,11 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="ca528bf6-b961-4576-b658-42a2f9331402"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
