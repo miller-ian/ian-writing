@@ -8,6 +8,19 @@ frontend:
         - 'yarn -v'
     build:
       commands:
+        # Ensure environment variables are available for Next.js runtime
+        - |
+          if [ -n "$RESEND_API_KEY" ]; then
+            echo "RESEND_API_KEY is set"
+          else
+            echo "WARNING: RESEND_API_KEY is not set"
+          fi
+        - |
+          if [ -n "$FROM_EMAIL" ]; then
+            echo "FROM_EMAIL is set"
+          else
+            echo "WARNING: FROM_EMAIL is not set"
+          fi
         - yarn build
         - 'ls -la'
         - 'ls -la .next/static'

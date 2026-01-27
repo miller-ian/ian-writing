@@ -10,7 +10,7 @@
 
 @layer components {
   .prose {
-    @apply max-w-none;
+    @apply max-w-[70ch];
   }
   
   .prose a {

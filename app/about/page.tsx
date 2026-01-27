@@ -5,7 +5,7 @@ export const revalidate = false
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-[70ch] mx-auto">
       <h1 className="text-4xl font-bold mb-8">About Me</h1>
       
       <section className="mb-12">

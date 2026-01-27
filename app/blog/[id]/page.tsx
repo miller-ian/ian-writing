@@ -16,7 +16,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
 
   if (!post) {
     return (
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-[70ch] mx-auto">
         <h1 className="text-4xl font-bold mb-4">Post not found</h1>
         <p>The requested blog post could not be found.</p>
       </div>
@@ -24,7 +24,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
   }
 
   return (
-    <article className="max-w-4xl mx-auto">
+    <article className="max-w-[70ch] mx-auto">
       <header className="mb-8">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <time className="text-gray-600 dark:text-gray-400">
@@ -32,7 +32,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
         </time>
       </header>
       <div 
-        className="prose dark:prose-invert"
+        className="prose dark:prose-invert max-w-[70ch]"
         dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
       />
     </article>
