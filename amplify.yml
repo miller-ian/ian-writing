@@ -12,14 +12,21 @@ frontend:
         - |
           if [ -n "$RESEND_API_KEY" ]; then
             echo "RESEND_API_KEY is set"
+            export RESEND_API_KEY="$RESEND_API_KEY"
           else
             echo "WARNING: RESEND_API_KEY is not set"
           fi
         - |
           if [ -n "$FROM_EMAIL" ]; then
             echo "FROM_EMAIL is set"
+            export FROM_EMAIL="$FROM_EMAIL"
           else
             echo "WARNING: FROM_EMAIL is not set"
+          fi
+        - |
+          if [ -n "$TO_EMAIL" ]; then
+            echo "TO_EMAIL is set"
+            export TO_EMAIL="$TO_EMAIL"
           fi
         - yarn build
         - 'ls -la'
