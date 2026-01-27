@@ -37,4 +37,5 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
       />
     </article>
   )
-} 
+}
+

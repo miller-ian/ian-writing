@@ -122,8 +122,8 @@ export default function ContactPage() {
       </form>
 
       <div className="mt-8 text-center">
-        <Link href="/blog" className="text-blue-600 dark:text-blue-400 hover:underline">
-          ← Back to blog
+        <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">
+          ← Back to home
         </Link>
       </div>
     </div>

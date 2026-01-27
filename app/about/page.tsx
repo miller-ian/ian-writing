@@ -75,7 +75,7 @@ export default function AboutPage() {
           Check out my most recent blog posts to see what I've been writing about.
         </p>
         <Link 
-          href="/blog"
+          href="/"
           className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
         >
           View Blog Posts

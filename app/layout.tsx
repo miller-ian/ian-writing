@@ -6,7 +6,7 @@ import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Subjective Truths',
+  title: 'Ian Miller',
   description: 'Personal blog and writing space',
 }
 
@@ -23,19 +23,19 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white text-gray-900 dark:bg-gray-900 dark:text-white`}>
         <div className="min-h-screen">
           <header className="border-b border-gray-200 dark:border-gray-700">
-            <div className="container mx-auto px-4 py-6">
+            <div className="max-w-[70ch] mx-auto py-6">
               <nav className="flex justify-between items-center">
-                <Link href="/blog" className="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400">
-                  Subjective Truths
+                <Link href="/" className="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400">
+                  Ian Miller
                 </Link>
                 <div className="space-x-4">
-                  <Link href="/blog" className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
+                  <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
                   <a href="/about" className="hover:text-blue-600 dark:hover:text-blue-400">About</a>
                 </div>
               </nav>
             </div>
           </header>
-          <main className="container mx-auto px-4 py-8">
+          <main className="py-8">
             {children}
           </main>
           <footer className="border-t border-gray-200 dark:border-gray-700">
@@ -86,7 +86,7 @@ export default function RootLayout({
                   </Link>
                 </div>
                 <div className="text-center text-gray-600 dark:text-gray-400">
-                  © {new Date().getFullYear()} Subjective Truths. All rights reserved.
+                  © {new Date().getFullYear()} Ian Miller. All rights reserved.
                 </div>
               </div>
             </div>
