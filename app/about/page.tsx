@@ -60,7 +60,7 @@ export default function AboutPage() {
           </li>
           <li>
             <a 
-              href="mailto:imiller7255@gmail.com"
+              href="mailto:imaxm7@gmail.com"
               className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
               Email

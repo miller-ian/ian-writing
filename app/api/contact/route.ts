@@ -22,37 +22,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if API key is configured
-    console.log(process.env.RESEND_API_KEY ? "Key found" : "Key missing")
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not set in environment variables')
-      return NextResponse.json(
-        { error: 'Email service is not configured. Please contact the administrator.' },
-        { status: 500 }
-      )
-    }
-
-    // Check if FROM_EMAIL is configured (must be from a verified domain)
-    if (!process.env.FROM_EMAIL) {
-      console.error('FROM_EMAIL is not set in environment variables')
-      return NextResponse.json(
-        { 
-          error: 'Email sender not configured. Please verify a domain in Resend and set the FROM_EMAIL environment variable to an email address from your verified domain (e.g., noreply@yourdomain.com).',
-        },
-        { status: 500 }
-      )
-    }
+    // TODO: Replace with environment variables once Amplify is configured
+    const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_DCZqFdCk_JnbuKcDouMFScTNVy4gaRkwj'
+    const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 
     // Send email using Resend
     const { Resend } = await import('resend')
-    const resend = new Resend(process.env.RESEND_API_KEY)
+    const resend = new Resend(RESEND_API_KEY)
     
-    const fromEmail = process.env.FROM_EMAIL
-    // Use TO_EMAIL from env for local testing, fallback to production email
-    const toEmail = process.env.TO_EMAIL || 'imiller7255@gmail.com'
+    const fromEmail = FROM_EMAIL
+    // Use TO_EMAIL from env for local testing, fallback to account email
+    const toEmail = process.env.TO_EMAIL || 'imaxm7@gmail.com'
     
     console.log('Environment variables check:', {
-      FROM_EMAIL: process.env.FROM_EMAIL,
+      FROM_EMAIL: FROM_EMAIL,
       TO_EMAIL: process.env.TO_EMAIL,
       'TO_EMAIL (resolved)': toEmail,
     })
@@ -61,7 +44,7 @@ export async function POST(request: NextRequest) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      hasApiKey: !!process.env.RESEND_API_KEY,
+      hasApiKey: !!RESEND_API_KEY,
     })
     
     try {
