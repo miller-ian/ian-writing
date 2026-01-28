@@ -28,7 +28,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
       <header className="mb-8">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
         <time className="text-gray-600 dark:text-gray-400">
-          {format(new Date(post.date), 'MMMM d, yyyy')}
+          {format(new Date(post.date), 'MMMM yyyy')}
         </time>
       </header>
       <div 

@@ -3,17 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   body {
-    @apply antialiased;
+    /* light tan background */
+    @apply antialiased text-zinc-950;
+    background-color: #e9e1c7; /* matched to home-hero.png background */
   }
 }
 
 @layer components {
   .prose {
-    @apply max-w-[70ch];
+    @apply max-w-[70ch] text-zinc-950;
   }
   
   .prose a {
-    @apply text-blue-600 dark:text-blue-400 no-underline hover:underline;
+    @apply text-zinc-950 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-950;
+  }
+
+  .flux-h1 {
+    @apply text-4xl sm:text-6xl font-semibold tracking-tight text-zinc-950;
+  }
+
+  .flux-kicker {
+    @apply text-xs tracking-[0.22em] uppercase text-zinc-500;
+  }
+
+  .flux-divider {
+    @apply border-t border-zinc-950;
   }
 } 

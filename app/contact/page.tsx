@@ -50,7 +50,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-2xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Get in Touch</h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-8">
+      <p className="text-zinc-950 mb-8">
         Send me a message and I'll get back to you as soon as possible.
       </p>
 
@@ -78,7 +78,7 @@ export default function ContactPage() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-zinc-950 rounded-md bg-[#e9e1c7] text-zinc-950 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-zinc-950 rounded-md bg-[#e9e1c7] text-zinc-950 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
@@ -108,7 +108,7 @@ export default function ContactPage() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+            className="w-full px-4 py-2 border border-zinc-950 rounded-md bg-[#e9e1c7] text-zinc-950 placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
           />
         </div>
 

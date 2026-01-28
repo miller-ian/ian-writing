@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Script from 'next/script'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
   title: 'Ian Miller',
@@ -21,33 +21,38 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-900 dark:bg-gray-900 dark:text-white`}>
+      <body className={`${inter.variable} font-sans text-zinc-950`}>
         <div className="min-h-screen">
-          <header className="border-b border-gray-200 dark:border-gray-700">
+          <header className="border-b border-zinc-950">
             <div className="max-w-[70ch] mx-auto py-6">
-              <nav className="flex justify-between items-center">
-                <Link href="/" className="text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400">
+              <nav className="flex items-center justify-between">
+                <Link
+                  href="/"
+                  className="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-950 hover:underline underline-offset-4 decoration-zinc-300"
+                >
                   Ian Miller
                 </Link>
-                <div className="space-x-4">
-                  <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
-                  <a href="/about" className="hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                <div className="flex items-center gap-6 text-sm text-zinc-950">
+                  <Link href="/" className="hover:underline underline-offset-4 decoration-zinc-300">Home</Link>
+                  <Link href="/essays" className="hover:underline underline-offset-4 decoration-zinc-300">Essays</Link>
+                  <a href="/about" className="hover:underline underline-offset-4 decoration-zinc-300">About</a>
+                  <a href="/contact" className="hover:underline underline-offset-4 decoration-zinc-300">Contact</a>
                 </div>
               </nav>
             </div>
           </header>
-          <main className="py-8">
+          <main className="py-10">
             {children}
           </main>
-          <footer className="border-t border-gray-200 dark:border-gray-700">
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex flex-col items-center space-y-4">
-                <div className="flex space-x-6">
+          <footer className="border-t border-zinc-950">
+            <div className="max-w-[70ch] mx-auto py-10">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-wrap gap-x-6 gap-y-3">
                   <a
                     href="https://www.linkedin.com/in/ian-miller-48812b14a/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-zinc-600 hover:text-zinc-950"
                     aria-label="LinkedIn"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -58,7 +63,7 @@ export default function RootLayout({
                     href="https://github.com/miller-ian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-zinc-600 hover:text-zinc-950"
                     aria-label="GitHub"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -69,7 +74,7 @@ export default function RootLayout({
                     href="https://x.com/miller__ian"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-zinc-600 hover:text-zinc-950"
                     aria-label="X (Twitter)"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +83,7 @@ export default function RootLayout({
                   </a>
                   <Link
                     href="/contact"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-zinc-600 hover:text-zinc-950"
                     aria-label="Email"
                   >
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,8 +91,8 @@ export default function RootLayout({
                     </svg>
                   </Link>
                 </div>
-                <div className="text-center text-gray-600 dark:text-gray-400">
-                  © {new Date().getFullYear()} Ian Miller. All rights reserved.
+                <div className="text-xs tracking-[0.22em] uppercase text-zinc-500">
+                  Ian Miller © {new Date().getFullYear()}
                 </div>
               </div>
             </div>
